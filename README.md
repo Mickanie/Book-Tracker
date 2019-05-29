@@ -10,12 +10,12 @@ https://mickanie.github.io/Book-Tracker/
 
 https://github.com/Mickanie/book-tracker-server
 
-[x] Connecting to server
-[x] Adding books
-[x] Displaying added books
-[x] Deleting books
-[x] Editing books
-[x] Forms validation
-[x] ISBN valitation
-[ ] Responsiveness
-[ ] Graphical improvements
+- [x] Connecting to server
+- [x] Adding books
+- [x] Displaying added books
+- [x] Deleting books
+- [x] Editing books
+- [x] Forms validation
+ -[x] ISBN valitation
+- [ ] Responsiveness
+- [ ] Graphical improvements
