@@ -1,8 +1,56 @@
 .new-book-container {
-    position: absolute;
-    top: 17%;
-    left: 24%;
-    height: 70vh;
-    //background: gray;
-    width: 25vw;
+  position: absolute;
+  top: 17%;
+  left: 24%;
+  height: 70vh;
+  //background: gray;
+  width: 25vw;
+
+  form {
+    display: grid;
+    margin-top: 15px;
+
+    input {
+      margin: 15px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid grey;
+      text-align: center;
+      padding: 5px;
+      outline: none;
+    }
+
+    input:invalid {
+      background: rgba(255, 0, 0, 0.143);
+    }
+
+    .rating-stars {
+        margin-top: 10px;
+      input {
+        visibility: hidden;
+        width: 5px;
+      
+      }
+
+      label {
+        font-size: 30px;
+        cursor: pointer;
+        color: rgb(212, 167, 62);
+        
+      }
+
+      input[type="radio"]:checked ~ input[type="radio"]:not(checked) + label {
+        color: grey;
+      }
+    }
+
+    input[type="submit"] {
+      background: rgb(219, 174, 70);
+      width: 300px;
+      border: 0;
+      margin: 20px auto;
+      padding: 5px;
+      border-radius: 10;
+    }
+  }
 }
