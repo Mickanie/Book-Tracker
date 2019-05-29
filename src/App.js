@@ -16,8 +16,9 @@ class App extends Component {
 
   addBook = async e => {
     e.preventDefault();
-    console.log(e.target);
+
     const { title, author, ISBN, pages, rating } = e.target;
+    title = title.trim();
     await fetch("https://book-tracker-server.herokuapp.com/add-book", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -38,7 +39,35 @@ class App extends Component {
     rating.value = "5";
   };
 
-  editBook = () => {};
+  editBook = async () => {
+    const ratingArea = document.querySelector(".rating-edition");
+    const title = document.querySelector("#title");
+    const author = document.querySelector("#author");
+    const ISBN = document.querySelector("#ISBN");
+    const pages = document.querySelector("#pages");
+    const rating = ratingArea.querySelector('input[type="radio"]:checked')
+      .value;
+    if (
+      title.checkValidity() &&
+      author.checkValidity &&
+      ISBN.checkValidity() &&
+      pages.checkValidity()
+    ) {
+      await fetch("https://book-tracker-server.herokuapp.com/edit-book", {
+        method: "put",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: title.value,
+          author: author.value,
+          ISBN: ISBN.value,
+          pages: pages.value,
+          rating
+        })
+      }).then(response =>
+        response.json().then(data => this.setState({ books: data }))
+      );
+    }
+  };
 
   deleteBook = async e => {
     console.log("delete");
@@ -60,7 +89,7 @@ class App extends Component {
         <h3>
           {" "}
           You've read {this.state.books.length}{" "}
-          {this.state.count === 1 ? "book" : "books"}
+          {this.state.books.length === 1 ? "book" : "books"}
         </h3>
         <div className="book-container">
           <NewBookForm addBook={this.addBook} />

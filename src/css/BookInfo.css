@@ -4,6 +4,30 @@
   position: relative;
 }
 
+.book-card input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid grey;
+  padding: 0;
+  outline: none;
+}
+
+.book-card .rating-edition input {
+  visibility: hidden;
+  width: 5px;
+  cursor: pointer;
+}
+
+.book-card .rating-edition label {
+  font-size: 20px;
+  cursor: pointer;
+  color: #d4a73e;
+}
+
+.book-card .rating-edition input[type="radio"]:checked ~ input[type="radio"]:not(checked) + label {
+  color: grey;
+}
+
 .book-card .delete,
 .book-card .edit {
   border-radius: 50%;

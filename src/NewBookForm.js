@@ -27,17 +27,37 @@ class NewBookForm extends Component {
         <h3>Add a new book</h3>
         <form onSubmit={this.props.addBook}>
           <label htmlFor="title">Title</label>
-          <input type="text" name="title" pattern="[A-Za-z\s0-9]{3,45}" />
+          <input
+            type="text"
+            name="title"
+            pattern="^[A-Z]{1}[A-Za-z\s0-9]{2,45}"
+            required
+            placeholder=" "
+          />
           <label htmlFor="author">Author</label>
           <input
             type="text"
             name="author"
-            pattern="[A-Za-z.]{3,15}\s{1}[A-Za-z]{3,20}"
+            pattern="[A-Z]{1}[a-z.]{1,15}\s{1}[A-Z]{1}[a-z]{2,20}"
+            required
+            placeholder=" "
           />
           <label htmlFor="ISBN">ISBN</label>
-          <input type="text" name="ISBN" pattern="[0-9]{13}" />
+          <input
+            type="text"
+            name="ISBN"
+            pattern="[0-9]{13}"
+            required
+            placeholder=" "
+          />
           <label htmlFor="pages">No of pages</label>
-          <input type="text" name="pages" pattern="[0-9]{2,4}" />
+          <input
+            type="text"
+            name="pages"
+            pattern="[0-9]{2,4}"
+            required
+            placeholder=" "
+          />
           <label htmlFor="rating">Your rating</label>
           <div className="rating-stars">
             <input type="radio" name="rating" value="1" id="rate-1" />

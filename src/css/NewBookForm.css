@@ -21,8 +21,8 @@
   outline: none;
 }
 
-.new-book-container form input:invalid {
-  background: rgba(255, 0, 0, 0.143);
+.new-book-container form input:placeholder-shown {
+  background: transparent;
 }
 
 .new-book-container form .rating-stars {

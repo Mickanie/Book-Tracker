@@ -3,6 +3,32 @@
   padding: 10px;
   position: relative;
 
+  input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid grey;
+    padding: 0;
+    outline: none;
+  }
+
+  .rating-edition {
+    input {
+      visibility: hidden;
+      width: 5px;
+      cursor: pointer;
+    }
+
+    label {
+      font-size: 20px;
+      cursor: pointer;
+      color: rgb(212, 167, 62);
+    }
+
+    input[type="radio"]:checked ~ input[type="radio"]:not(checked) + label {
+      color: grey;
+    }
+  }
+
   .delete,
   .edit {
     border-radius: 50%;
