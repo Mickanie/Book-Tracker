@@ -18,7 +18,7 @@ class App extends Component {
     e.preventDefault();
 
     const { title, author, ISBN, pages, rating } = e.target;
-    title = title.trim();
+    title.value = title.value.trim();
     await fetch("https://book-tracker-server.herokuapp.com/add-book", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -39,7 +39,7 @@ class App extends Component {
     rating.value = "5";
   };
 
-  editBook = async () => {
+  editBook = async (e) => {
     const ratingArea = document.querySelector(".rating-edition");
     const title = document.querySelector("#title");
     const author = document.querySelector("#author");
@@ -57,9 +57,10 @@ class App extends Component {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ISBN: e.target.dataset.isbn,
           title: title.value,
           author: author.value,
-          ISBN: ISBN.value,
+          newISBN: ISBN.value,
           pages: pages.value,
           rating
         })

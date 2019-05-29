@@ -10,6 +10,19 @@
     display: grid;
     margin-top: 15px;
 
+    .error-sign {
+      font-size: 25px;
+      font-weight: 700;
+      color: red;
+      position: absolute;
+      right: 10%;
+      top: 42%;
+    }
+
+    input:placeholder-shown ~ .error-sign {
+      visibility: hidden !important;
+    }
+
     input {
       margin: 15px;
       background: transparent;
@@ -21,7 +34,7 @@
     }
 
     input:placeholder-shown {
-      background: transparent;
+      background: transparent !important;
     }
 
     .rating-stars {

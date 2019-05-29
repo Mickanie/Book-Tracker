@@ -7,25 +7,29 @@ class BookInfo extends Component {
     super(props);
 
     this.state = {
-      editMode: false
+      editMode: false,
+      ISBN: ""
     };
   }
 
-  /*   componentWillMount() {}
+  validateISBN = ISBN => {
+    if (ISBN.length === 13) {
+      const array = ISBN.split("");
+      let sum = 0;
+      for (let i = 1; i <= array.length; i++) {
+        if (i % 2 == 1) {
+          sum += parseInt(array[i - 1]);
+        } else {
+          sum += 3 * parseInt(array[i - 1]);
+        }
+      }
+      return sum % 10 === 0 ? true : false;
+    } else {
+      return false;
+    }
+  };
 
-  componentDidMount() {}
-
-  componentWillReceiveProps(nextProps) {}
-
-  shouldComponentUpdate(nextProps, nextState) {}
-
-  componentWillUpdate(nextProps, nextState) {}
-
-  componentDidUpdate(prevProps, prevState) {}
-
-  componentWillUnmount() {} */
-
-  switchEditMode = () => {
+  switchEditMode = (e) => {
     if (this.state.editMode) {
       const ratingArea = document.querySelector(".rating-edition");
       const title = document.querySelector("#title");
@@ -40,10 +44,11 @@ class BookInfo extends Component {
         author.checkValidity() &&
         ISBN.value &&
         ISBN.checkValidity() &&
+        this.validateISBN(ISBN.value) &&
         pages.checkValidity()
       ) {
         this.setState({ editMode: false });
-        this.props.editBook(this.props.book.ISBN);
+        this.props.editBook(e, this.props.book.ISBN);
       }
     } else {
       this.setState({ editMode: true });
@@ -52,6 +57,8 @@ class BookInfo extends Component {
 
   render() {
     const book = this.props.book;
+    let background = this.validateISBN(this.state.ISBN)    ? "transparent"
+    : "rgba(255, 0, 0, 0.143)";;
     return (
       <div className="book-card">
         <button
@@ -114,6 +121,8 @@ class BookInfo extends Component {
                     id="ISBN"
                     pattern="[0-9]{13}"
                     required
+                    style={{ background }}
+                    onChange={e => this.setState({ ISBN: e.target.value })}
                     defaultValue={book.ISBN}
                   />
                 ) : (

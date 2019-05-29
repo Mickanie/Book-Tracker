@@ -11,6 +11,19 @@
   margin-top: 15px;
 }
 
+.new-book-container form .error-sign {
+  font-size: 25px;
+  font-weight: 700;
+  color: red;
+  position: absolute;
+  right: 10%;
+  top: 42%;
+}
+
+.new-book-container form input:placeholder-shown ~ .error-sign {
+  visibility: hidden !important;
+}
+
 .new-book-container form input {
   margin: 15px;
   background: transparent;
@@ -22,7 +35,7 @@
 }
 
 .new-book-container form input:placeholder-shown {
-  background: transparent;
+  background: transparent !important;
 }
 
 .new-book-container form .rating-stars {

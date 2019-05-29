@@ -5,23 +5,33 @@ import "./css/NewBookForm.css";
 class NewBookForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      ISBN: ""
+    };
   }
 
-  /*   componentWillMount() {}
-
-  componentDidMount() {}
-
-  componentWillReceiveProps(nextProps) {}
-
-  shouldComponentUpdate(nextProps, nextState) {}
-
-  componentWillUpdate(nextProps, nextState) {}
-
-  componentDidUpdate(prevProps, prevState) {}
-
-  componentWillUnmount() {} */
+  validateISBN = ISBN => {
+    if (ISBN.length === 13) {
+      const array = ISBN.split("");
+      let sum = 0;
+      for (let i = 1; i <= array.length; i++) {
+        if (i % 2 == 1) {
+          sum += parseInt(array[i - 1]);
+        } else {
+          sum += 3 * parseInt(array[i - 1]);
+        }
+      }
+      return sum % 10 === 0 ? true : false;
+    } else {
+      return false;
+    }
+  };
 
   render() {
+    let visibility = this.validateISBN(this.state.ISBN) ? "hidden" : "visible";
+    let background = this.validateISBN(this.state.ISBN)
+      ? "transparent"
+      : "rgba(255, 0, 0, 0.143)";
     return (
       <div className="new-book-container">
         <h3>Add a new book</h3>
@@ -46,10 +56,16 @@ class NewBookForm extends Component {
           <input
             type="text"
             name="ISBN"
+            id="ISBN"
             pattern="[0-9]{13}"
             required
             placeholder=" "
+            style={{ background }}
+            onChange={e => this.setState({ ISBN: e.target.value })}
           />
+          <p className="error-sign" style={{ visibility }}>
+            !
+          </p>
           <label htmlFor="pages">No of pages</label>
           <input
             type="text"
@@ -78,7 +94,11 @@ class NewBookForm extends Component {
             <label htmlFor="rate-5">★</label>
           </div>
 
-          <input type="submit" value="Add" />
+          <input
+            type="submit"
+            value="Add"
+            disabled={!this.validateISBN(this.state.ISBN)}
+          />
         </form>
       </div>
     );
