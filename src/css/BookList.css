@@ -4,4 +4,5 @@
   right: 23%;
   width: 25vw;
   height: 70vh;
+  overflow: auto;
 }

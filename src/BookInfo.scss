@@ -1,0 +1,17 @@
+.book-card {
+    border-bottom: 1px solid grey;
+    padding: 10px;
+    
+    td {
+        padding: 0 15px;
+   
+        &.left-column {
+            text-align: right;
+        }
+
+        &.right-column {
+            text-align: left;
+        }
+
+    }
+}
