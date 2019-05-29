@@ -7,7 +7,7 @@ class BookInfo extends Component {
     super(props);
   }
 
-  componentWillMount() {}
+  /*   componentWillMount() {}
 
   componentDidMount() {}
 
@@ -19,12 +19,24 @@ class BookInfo extends Component {
 
   componentDidUpdate(prevProps, prevState) {}
 
-  componentWillUnmount() {}
+  componentWillUnmount() {} */
 
   render() {
     const book = this.props.book;
     return (
       <div className="book-card">
+        <button
+          className="edit"
+          data-isbn={book.ISBN}
+          onClick={this.props.editBook}
+        />
+        <button
+          className="delete"
+          data-isbn={book.ISBN}
+          onClick={this.props.deleteBook}
+        >
+          ✖
+        </button>
         <table>
           <tbody>
             <tr>

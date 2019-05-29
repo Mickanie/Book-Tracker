@@ -1,6 +1,31 @@
 .book-card {
   border-bottom: 1px solid grey;
   padding: 10px;
+  position: relative;
+}
+
+.book-card .delete,
+.book-card .edit {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background: #646464;
+  margin: 0 0 0 10px;
+  padding: 0;
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  right: 10%;
+  top: 25%;
+  border: 0;
+  cursor: pointer;
+}
+
+.book-card .edit {
+  background: url("../img/edit.png");
+  background-size: cover;
+  background-color: #646464;
+  top: 55%;
 }
 
 .book-card td {

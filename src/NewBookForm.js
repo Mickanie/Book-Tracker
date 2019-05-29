@@ -7,7 +7,7 @@ class NewBookForm extends Component {
     super(props);
   }
 
-  componentWillMount() {}
+  /*   componentWillMount() {}
 
   componentDidMount() {}
 
@@ -19,28 +19,13 @@ class NewBookForm extends Component {
 
   componentDidUpdate(prevProps, prevState) {}
 
-  componentWillUnmount() {}
-
-  addBook = async e => {
-    const { title, author, ISBN, pages, rating } = e.target;
-    await fetch(" http://localhost:3001/add-book", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title: title.value,
-        author: author.value,
-        ISBN: ISBN.value,
-        pages: pages.value,
-        rating: rating.value
-      })
-    });
-  };
+  componentWillUnmount() {} */
 
   render() {
     return (
       <div className="new-book-container">
         <h3>Add a new book</h3>
-        <form onSubmit={this.addBook}>
+        <form onSubmit={this.props.addBook}>
           <label htmlFor="title">Title</label>
           <input type="text" name="title" pattern="[A-Za-z\s0-9]{3,45}" />
           <label htmlFor="author">Author</label>
@@ -63,7 +48,13 @@ class NewBookForm extends Component {
             <label htmlFor="rate-3">★</label>
             <input type="radio" name="rating" value="4" id="rate-4" />
             <label htmlFor="rate-4">★</label>
-            <input type="radio" name="rating" value="5" id="rate-5" defaultChecked />
+            <input
+              type="radio"
+              name="rating"
+              value="5"
+              id="rate-5"
+              defaultChecked
+            />
             <label htmlFor="rate-5">★</label>
           </div>
 

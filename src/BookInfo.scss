@@ -1,17 +1,41 @@
 .book-card {
-    border-bottom: 1px solid grey;
-    padding: 10px;
-    
-    td {
-        padding: 0 15px;
-   
-        &.left-column {
-            text-align: right;
-        }
+  border-bottom: 1px solid grey;
+  padding: 10px;
+  position: relative;
 
-        &.right-column {
-            text-align: left;
-        }
+  .delete,
+  .edit {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: rgb(100, 100, 100);
+    margin: 0 0 0 10px;
+    padding: 0;
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    right: 10%;
+    top: 25%;
+    border: 0;
+    cursor: pointer;
+  }
 
+  .edit {
+    background: url("../img/edit.png");
+    background-size: cover;
+    background-color: rgb(100, 100, 100);
+    top: 55%;
+  }
+
+  td {
+    padding: 0 15px;
+
+    &.left-column {
+      text-align: right;
     }
+
+    &.right-column {
+      text-align: left;
+    }
+  }
 }

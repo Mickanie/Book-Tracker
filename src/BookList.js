@@ -6,21 +6,11 @@ import BookInfo from "./BookInfo";
 class BookList extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      books: []
-    };
   }
 
   componentWillMount() {}
 
-  componentDidMount() {
-    fetch("http://localhost:3001/booklist")
-      .then(response => response.json())
-      .then(data => this.setState({ books: data }));
-  }
-
-/*   componentWillReceiveProps(nextProps) {}
+  /*   componentWillReceiveProps(nextProps) {}
 
   shouldComponentUpdate(nextProps, nextState) {}
 
@@ -35,8 +25,8 @@ class BookList extends Component {
       <div className="book-list-container">
         <h3>Books you've read:</h3>
         <div>
-          {this.state.books.map((book, i) => (
-            <BookInfo key={i} book={book} />
+          {this.props.books.map((book, i) => (
+            <BookInfo key={i} book={book} deleteBook={this.props.deleteBook}/>
           ))}
         </div>
       </div>
