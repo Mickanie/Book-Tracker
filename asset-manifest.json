@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Book-Tracker/static/css/main.f4a2e572.chunk.css",
+    "main.js": "/Book-Tracker/static/js/main.342d302e.chunk.js",
+    "main.js.map": "/Book-Tracker/static/js/main.342d302e.chunk.js.map",
+    "runtime~main.js": "/Book-Tracker/static/js/runtime~main.3497212f.js",
+    "runtime~main.js.map": "/Book-Tracker/static/js/runtime~main.3497212f.js.map",
+    "static/js/2.77b90360.chunk.js": "/Book-Tracker/static/js/2.77b90360.chunk.js",
+    "static/js/2.77b90360.chunk.js.map": "/Book-Tracker/static/js/2.77b90360.chunk.js.map",
+    "index.html": "/Book-Tracker/index.html",
+    "precache-manifest.b63e71a3187cdef20134ab1941cbcaf0.js": "/Book-Tracker/precache-manifest.b63e71a3187cdef20134ab1941cbcaf0.js",
+    "service-worker.js": "/Book-Tracker/service-worker.js",
+    "static/css/main.f4a2e572.chunk.css.map": "/Book-Tracker/static/css/main.f4a2e572.chunk.css.map",
+    "static/media/App.css": "/Book-Tracker/static/media/book.86e5b4e9.png"
+  }
+}
