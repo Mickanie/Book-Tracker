@@ -66,7 +66,7 @@ class NewBookForm extends Component {
           <p className="error-sign" style={{ visibility }}>
             !
           </p>
-          <label htmlFor="pages">No of pages</label>
+          <label htmlFor="pages">Number of pages</label>
           <input
             type="text"
             name="pages"

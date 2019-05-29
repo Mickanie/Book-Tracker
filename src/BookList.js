@@ -8,18 +8,6 @@ class BookList extends Component {
     super(props);
   }
 
-  componentWillMount() {}
-
-  /*   componentWillReceiveProps(nextProps) {}
-
-  shouldComponentUpdate(nextProps, nextState) {}
-
-  componentWillUpdate(nextProps, nextState) {}
-
-  componentDidUpdate(prevProps, prevState) {}
-
-  componentWillUnmount() {} */
-
   render() {
     return (
       <div className="book-list-container">

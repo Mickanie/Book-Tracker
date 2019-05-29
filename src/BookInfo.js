@@ -8,7 +8,7 @@ class BookInfo extends Component {
 
     this.state = {
       editMode: false,
-      ISBN: ""
+      ISBN: this.props.book.ISBN
     };
   }
 
@@ -29,22 +29,18 @@ class BookInfo extends Component {
     }
   };
 
-  switchEditMode = (e) => {
+  switchEditMode = e => {
     if (this.state.editMode) {
-      const ratingArea = document.querySelector(".rating-edition");
       const title = document.querySelector("#title");
       const author = document.querySelector("#author");
       const ISBN = document.querySelector("#ISBN");
       const pages = document.querySelector("#pages");
+   
 
       if (
-        title.value &&
         title.checkValidity() &&
-        author.value &&
-        author.checkValidity() &&
-        ISBN.value &&
-        ISBN.checkValidity() &&
-        this.validateISBN(ISBN.value) &&
+         author.checkValidity() &&
+        this.validateISBN(this.state.ISBN) &&
         pages.checkValidity()
       ) {
         this.setState({ editMode: false });
@@ -57,8 +53,9 @@ class BookInfo extends Component {
 
   render() {
     const book = this.props.book;
-    let background = this.validateISBN(this.state.ISBN)    ? "transparent"
-    : "rgba(255, 0, 0, 0.143)";;
+    let background = this.validateISBN(this.state.ISBN)
+      ? "transparent"
+      : "rgba(255, 0, 0, 0.143)";
     return (
       <div className="book-card">
         <button
@@ -84,7 +81,7 @@ class BookInfo extends Component {
                     name="title"
                     id="title"
                     pattern="^[A-Z]{1}[A-Za-z\s0-9]{2,45}"
-                    rewuired
+                    required
                     defaultValue={book.title}
                   />
                 ) : (
@@ -131,7 +128,7 @@ class BookInfo extends Component {
               </td>
             </tr>
             <tr>
-              <td className="left-column">No of pages:</td>
+              <td className="left-column">No. of pages:</td>
               <td className="right-column">
                 {" "}
                 {this.state.editMode ? (
