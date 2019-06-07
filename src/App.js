@@ -39,7 +39,7 @@ class App extends Component {
     rating.value = "5";
   };
 
-  editBook = async (e) => {
+  editBook = async e => {
     const ratingArea = document.querySelector(".rating-edition");
     const title = document.querySelector("#title");
     const author = document.querySelector("#author");
@@ -47,12 +47,15 @@ class App extends Component {
     const pages = document.querySelector("#pages");
     const rating = ratingArea.querySelector('input[type="radio"]:checked')
       .value;
+    
+    
     if (
       title.checkValidity() &&
-      author.checkValidity &&
+      author.checkValidity() &&
       ISBN.checkValidity() &&
       pages.checkValidity()
     ) {
+      console.log("Editing");
       await fetch("https://book-tracker-server.herokuapp.com/edit-book", {
         method: "put",
         headers: { "Content-Type": "application/json" },

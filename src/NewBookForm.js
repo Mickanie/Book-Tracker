@@ -14,14 +14,19 @@ class NewBookForm extends Component {
     if (ISBN.length === 13) {
       const array = ISBN.split("");
       let sum = 0;
-      for (let i = 1; i <= array.length; i++) {
+      for (let i = 1; i <= array.length-1; i++) {
         if (i % 2 == 1) {
           sum += parseInt(array[i - 1]);
         } else {
           sum += 3 * parseInt(array[i - 1]);
         }
       }
-      return sum % 10 === 0 ? true : false;
+      console.log(sum);
+      console.log(10 - (sum % 10))
+      if (sum % 10 === 0) {
+        return parseInt(array[12]) === 0;
+      }
+      return 10 - (sum % 10) === parseInt(array[12]);
     } else {
       return false;
     }
