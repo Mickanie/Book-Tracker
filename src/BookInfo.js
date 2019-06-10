@@ -5,6 +5,11 @@ import "./css/BookInfo.css";
 class BookInfo extends Component {
   constructor(props) {
     super(props);
+    this.title = React.createRef();
+    this.author = React.createRef();
+    this.ISBN = React.createRef();
+    this.pages = React.createRef();
+    this.rating = React.createRef();
 
     this.state = {
       editMode: false,
@@ -31,20 +36,28 @@ class BookInfo extends Component {
 
   switchEditMode = e => {
     if (this.state.editMode) {
-      const title = document.querySelector("#title");
-      const author = document.querySelector("#author");
-      const ISBN = document.querySelector("#ISBN");
-      const pages = document.querySelector("#pages");
-   
+      const title = this.title.current;
+      const author = this.author.current;
+      const ISBN = this.ISBN.current;
+      const pages = this.pages.current;
+      const rating = this.rating.current;
+      console.log(rating);
 
       if (
         title.checkValidity() &&
-         author.checkValidity() &&
+        author.checkValidity() &&
         this.validateISBN(this.state.ISBN) &&
         pages.checkValidity()
       ) {
         this.setState({ editMode: false });
-        this.props.editBook(e, this.props.book.ISBN);
+        this.props.editBook(
+          e,
+          title,
+          author,
+          ISBN,
+          pages,
+          rating
+        );
       }
     } else {
       this.setState({ editMode: true });
@@ -82,6 +95,7 @@ class BookInfo extends Component {
                     id="title"
                     pattern="^[A-Z]{1}[A-Za-z\s0-9]{2,45}"
                     required
+                    ref={this.title}
                     defaultValue={book.title}
                   />
                 ) : (
@@ -100,6 +114,7 @@ class BookInfo extends Component {
                     id="author"
                     pattern="[A-Z]{1}[a-z.]{1,15}\s{1}[A-Z]{1}[a-z]{2,20}"
                     required
+                    ref={this.author}
                     defaultValue={book.author}
                   />
                 ) : (
@@ -119,6 +134,7 @@ class BookInfo extends Component {
                     pattern="[0-9]{13}"
                     required
                     style={{ background }}
+                    ref={this.ISBN}
                     onChange={e => this.setState({ ISBN: e.target.value })}
                     defaultValue={book.ISBN}
                   />
@@ -138,6 +154,7 @@ class BookInfo extends Component {
                     id="pages"
                     pattern="[0-9]{2,4}"
                     required
+                    ref={this.pages}
                     defaultValue={book.pages}
                   />
                 ) : (
@@ -150,7 +167,7 @@ class BookInfo extends Component {
               <td className="right-column">
                 {" "}
                 {this.state.editMode ? (
-                  <div className="rating-edition">
+                  <div className="rating-edition" ref={this.rating}>
                     <input type="radio" name="rating" value="1" id="rated-1" />
                     <label htmlFor="rated-1">★</label>
                     <input type="radio" name="rating" value="2" id="rated-2" />

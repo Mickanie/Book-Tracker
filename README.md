@@ -16,6 +16,6 @@ https://github.com/Mickanie/book-tracker-server
 - [x] Deleting books
 - [x] Editing books
 - [x] Forms validation
- -[x] ISBN valitation
+- [x] ISBN valitation
 - [ ] Responsiveness
 - [ ] Graphical improvements

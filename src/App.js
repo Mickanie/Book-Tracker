@@ -39,16 +39,10 @@ class App extends Component {
     rating.value = "5";
   };
 
-  editBook = async e => {
-    const ratingArea = document.querySelector(".rating-edition");
-    const title = document.querySelector("#title");
-    const author = document.querySelector("#author");
-    const ISBN = document.querySelector("#ISBN");
-    const pages = document.querySelector("#pages");
-    const rating = ratingArea.querySelector('input[type="radio"]:checked')
-      .value;
-    
-    
+  editBook = async (e, title, author, ISBN, pages, rating) => {
+    console.log(rating);
+    const rate = rating.querySelector('input[type="radio"]:checked').value;
+
     if (
       title.checkValidity() &&
       author.checkValidity() &&
@@ -65,7 +59,7 @@ class App extends Component {
           author: author.value,
           newISBN: ISBN.value,
           pages: pages.value,
-          rating
+          rating: rate
         })
       }).then(response =>
         response.json().then(data => this.setState({ books: data }))
