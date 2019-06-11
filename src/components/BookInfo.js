@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./css/BookInfo.css";
+import "../css/BookInfo.css";
 
 class BookInfo extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class BookInfo extends Component {
       const array = ISBN.split("");
       let sum = 0;
       for (let i = 1; i <= array.length; i++) {
-        if (i % 2 == 1) {
+        if (i % 2 === 1) {
           sum += parseInt(array[i - 1]);
         } else {
           sum += 3 * parseInt(array[i - 1]);
@@ -66,9 +65,9 @@ class BookInfo extends Component {
 
   render() {
     const book = this.props.book;
-    let background = this.validateISBN(this.state.ISBN)
+   /* let background = this.validateISBN(this.props.book.ISBN)
       ? "transparent"
-      : "rgba(255, 0, 0, 0.143)";
+      : "rgba(255, 0, 0, 0.143)";*/
     return (
       <div className="book-card">
         <button
@@ -133,7 +132,7 @@ class BookInfo extends Component {
                     id="ISBN"
                     pattern="[0-9]{13}"
                     required
-                    style={{ background }}
+                    //style={{ background }}
                     ref={this.ISBN}
                     onChange={e => this.setState({ ISBN: e.target.value })}
                     defaultValue={book.ISBN}

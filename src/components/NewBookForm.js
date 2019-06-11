@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./css/NewBookForm.css";
+import "../css/NewBookForm.css";
 
 class NewBookForm extends Component {
   constructor(props) {
@@ -15,15 +14,13 @@ class NewBookForm extends Component {
       const array = ISBN.split("");
       let sum = 0;
       for (let i = 1; i <= array.length-1; i++) {
-        if (i % 2 == 1) {
+        if (i % 2 === 1) {
           sum += parseInt(array[i - 1]);
         } else {
           sum += 3 * parseInt(array[i - 1]);
         }
       }
-      console.log(sum);
-      console.log(10 - (sum % 10))
-      if (sum % 10 === 0) {
+       if (sum % 10 === 0) {
         return parseInt(array[12]) === 0;
       }
       return 10 - (sum % 10) === parseInt(array[12]);
